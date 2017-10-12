@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace WebCore1.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class TesteController : Controller
     {
-        // GET api/values
+        // GET: api/values
         [HttpGet]
         public IEnumerable<string> Get()
         {
@@ -20,7 +19,7 @@ namespace WebCore1.Controllers
         [HttpGet("{id}")]
         public string Get(int id)
         {
-            return "value "+id.ToString()+" digitado";
+            return "value";
         }
 
         // POST api/values
