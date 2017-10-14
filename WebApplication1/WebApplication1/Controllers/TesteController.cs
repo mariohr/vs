@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -7,6 +8,13 @@ using System.Web.Http;
 
 namespace WebApplication1.Controllers
 {
+    public class Resposta
+    {
+        public string msg { get; set; }
+        public DateTime ts { get; set; }
+    }
+
+
     public class TesteController : ApiController
     {
         // GET: api/Teste
@@ -19,6 +27,26 @@ namespace WebApplication1.Controllers
         public string Get(int id)
         {
             return "value";
+        }
+
+        // GET: api/Teste/now
+        [Route("api/Teste/now")]
+        [HttpGet]
+        public string GetNow()
+        {
+            return DateTime.Now.ToString();
+        }
+        
+        // GET: api/Teste/resposta
+        [Route("api/Teste/resposta")]
+        [HttpGet]
+        public string GetResposta()
+       
+            Resposta resp = new Resposta();
+            resp.msg = "teste";
+            resp.ts = DateTime.Now;
+            string s = JsonConvert.SerializeObject(resp);
+            return s;
         }
 
         // POST: api/Teste
